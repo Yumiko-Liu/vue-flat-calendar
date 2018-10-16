@@ -6,12 +6,16 @@
 
 [demo](https://yumiko-liu.github.io/vue-flat-calendar/index.html)
 
-<img src="https://i.loli.net/2018/10/16/5bc590d175e08.png" style="width: 300px"/>
+![](https://s1.ax1x.com/2018/10/16/ia5tZq.png)
 
-<img src="https://i.loli.net/2018/10/16/5bc5923c3c84f.png" style="width: 200px"/>
+![](https://s1.ax1x.com/2018/10/16/ia51zQ.png)
 
 
 ## 使用
+
+``` bash
+npm install flat-calendar --save
+```
 
 ``` javascript
 import vueFlatCalendar from 'vue-flat-calendar'

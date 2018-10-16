@@ -1,7 +1,7 @@
 {
   "name": "flat-calendar",
   "description": "📅一个基于 Vue.js 2.x 的日历组件",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Yumiko <yumiko.liu@yahoo.com>",
   "license": "MIT",
   "private": false,
@@ -10,6 +10,13 @@
     "type": "git",
     "url": "https://github.com/Yumiko-Liu/vue-flat-calendar.git"
   },
+  "keywords": [
+    "vue",
+    "calendar",
+    "vue-calendar",
+    "flat-calendar",
+    "vue-flat-calendar"
+  ],
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",

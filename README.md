@@ -18,7 +18,7 @@ npm install flat-calendar --save
 ```
 
 ``` javascript
-import vueFlatCalendar from 'vue-flat-calendar'
+import vueFlatCalendar from 'flat-calendar'
 
 Vue.use(vueFlatCalendar)
 ```

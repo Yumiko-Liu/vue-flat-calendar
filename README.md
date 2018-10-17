@@ -24,7 +24,7 @@ Vue.use(vueFlatCalendar)
 ```
 
 ``` html
-<vue-flat-calendar v-model="showCalendar" @change="selectDate" />
+<vue-flat-calendar v-model="showCalendar" :defaultDate="new Date()" @change="selectDate" />
 ```
 
 ## 参数
@@ -39,8 +39,3 @@ defaultDate | 默认选中的日期 | Date | new Date()
 event name | description | 	parameter of callback
 --- | --- | ---
 change | 日期变化时触发 | date
-
-## 最后
-
-* 懒癌复发，力不从心
-* 随心维护，谨慎使用

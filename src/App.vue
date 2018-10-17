@@ -2,7 +2,7 @@
   <div id="app">
     <div class="btn" @click="toggle">開</div>
     <div class="selected-date">{{selectedDate}}</div>
-    <vue-flat-calendar v-model="showCalendar" :defaultDate="defaultDate" @change="selectDate"/>
+    <vue-flat-calendar v-model="showCalendar" :defaultDate="defaultDate" @change="selectDate" />
   </div>
 </template>
 

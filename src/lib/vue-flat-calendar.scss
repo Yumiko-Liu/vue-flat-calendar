@@ -23,11 +23,12 @@
     padding: 5px 0;
     background: #F9F9F9;
     .close-icon {
+      box-sizing: initial;
       position: absolute;
       left: 0;
       top: 0;
       height: 22px;
-      width: auto;
+      width: 22px;
       padding: 5px;
     }
     span {
@@ -44,8 +45,9 @@
       align-items: center;
       background: #F9F9F9;
       .icon {
+        box-sizing: initial;
         height: 20px;
-        width: auto;
+        width: 20px;
         padding: 5px;
       }
       span {
@@ -93,6 +95,9 @@
               line-height: 28px;
               &.gray {
                 color: #A3A3A3;
+              }
+              &.disabled {
+                color: #ccc;
               }
               &.date-selected {
                 background: #FF3B30;

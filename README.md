@@ -33,9 +33,11 @@ option | description | type | default
 --- | --- | --- | ---
 v-model | 显示或隐藏日历 | Boolean | false
 defaultDate | 默认选中的日期 | Date | new Date()
+startDate | 起始日期（范围） | Date | null
+endDate | 结束日期（范围） | Date | null
 
 ## 事件
 
-event name | description | 	parameter of callback
+event name | description | parameter of callback
 --- | --- | ---
 change | 日期变化时触发 | date

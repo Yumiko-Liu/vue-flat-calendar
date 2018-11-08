@@ -24,7 +24,7 @@
             <div class="date">
               <div class="row" v-for="(row, i) in datesInMonth" :key="i">
                 <div class="cell" v-for="(date, idx) in row" :key="idx">
-                  <span :class="{'date-selected': selectedDate.getFullYear() == currentYear && selectedDate.getMonth() == month && selectedDate.getDate() == date, 'gray': idx === 0 || idx === 6}" @click="clickDate(month, date)">{{date}}</span>
+                  <span :class="{'date-selected': selectedDate.getFullYear() == currentYear && selectedDate.getMonth() == month && selectedDate.getDate() == date.date, 'disabled': date.disabled}" @click="clickDate(month, date)">{{date.date}}</span>
                 </div>
               </div>
             </div>
@@ -46,6 +46,14 @@ export default {
     defaultDate: {
       type: Date,
       default: new Date()
+    },
+    startDate: {
+      type: Date,
+      default: null
+    },
+    endDate: {
+      type: Date,
+      default: null
     }
   },
   model: {
@@ -73,8 +81,8 @@ export default {
       this.$emit('toggleShowCalendar', !this.showCalendar);
     },
     clickDate(month, date) {
-      if (date) {
-        this.$emit('change', new Date(this.currentYear, month, date));
+      if (!date.disabled) {
+        this.$emit('change', new Date(this.currentYear, month, date.date));
         this.emitToggle();
       }
     },
@@ -85,15 +93,33 @@ export default {
         let firstDay = this.getFirstDayInMonth(i);
         this.$set(this.datesInYear, i, []);
         for (let j = 1; j <= datesInMonth; j++) {
-          dates.push(j);
+          let fullDate = new Date(year, i, j);
+          let startDate = this.startDate || new Date(0, 0, 0);
+          let endDate = this.endDate || new Date(9999, 12, 31);
+          let obj = {};
+          obj.date = j;
+
+          if (fullDate >= startDate && fullDate <= endDate) {
+            obj.disabled = false;
+          } else {
+            obj.disabled = true;
+          }
+          
+          dates.push(obj);
         }
         for (let j = 0; j < firstDay; j++) {
-          dates.unshift("");
+          let obj = {};
+          obj.date = "";
+          obj.disabled = false;
+          dates.unshift(obj);
         }
         if (dates.length % this.week.length) {
           let times = this.week.length - (dates.length % this.week.length);
           for (let j = 0; j < times; j++) {
-            dates.push("");
+            let obj = {};
+            obj.date = "";
+            obj.disabled = false;
+            dates.push(obj);
           }
         }
         for (let j = 0; j < dates.length / this.week.length; j++) {

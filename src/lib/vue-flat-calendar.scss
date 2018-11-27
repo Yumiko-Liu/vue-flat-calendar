@@ -99,6 +99,11 @@
               &.disabled {
                 color: #ccc;
               }
+              &.date-today {
+                background: #ccc;
+                color: #fff;
+                border-radius: 50%;
+              }
               &.date-selected {
                 background: #FF3B30;
                 color: #fff;

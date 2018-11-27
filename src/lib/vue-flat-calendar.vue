@@ -14,7 +14,7 @@
         <div class="week-panel">
           <span class="cell" v-for="(day, index) in week" :key="index">{{day}}</span>
         </div>
-        <div class="months" ref="months">
+        <div class="months" ref="months" @click="proxy($event)">
           <div class="single-month" v-for="(datesInMonth, month) in datesInYear" :key="month">
             <div class="month-title">
               <div class="row" :ref="selectedDate.getFullYear() == currentYear && selectedDate.getMonth() == month ? 'curRow': ''">
@@ -24,7 +24,11 @@
             <div class="date">
               <div class="row" v-for="(row, i) in datesInMonth" :key="i">
                 <div class="cell" v-for="(date, idx) in row" :key="idx">
-                  <span :class="{'date-selected': selectedDate.getFullYear() == currentYear && selectedDate.getMonth() == month && selectedDate.getDate() == date.date, 'disabled': date.disabled}" @click="clickDate(month, date)">{{date.date}}</span>
+                  <span 
+                    :class="{'date-today': new Date().getFullYear() == currentYear && new Date().getMonth() == month && new Date().getDate() == date.date, 'date-selected': selectedDate.getFullYear() == currentYear && selectedDate.getMonth() == month && selectedDate.getDate() == date.date, 'disabled': date.disabled}"
+                    :data-month="month"
+                    :data-date="JSON.stringify(date)"
+                  >{{date.date}}</span>
                 </div>
               </div>
             </div>
@@ -80,6 +84,10 @@ export default {
     emitToggle() {
       this.$emit('toggleShowCalendar', !this.showCalendar);
     },
+    proxy(e) {
+      let target = e.target;
+      target.nodeName.toUpperCase() === 'SPAN' && this.clickDate(target.dataset.month, JSON.parse(target.dataset.date));
+    },
     clickDate(month, date) {
       if (!date.disabled) {
         this.$emit('change', new Date(this.currentYear, month, date.date));
@@ -95,7 +103,7 @@ export default {
         for (let j = 1; j <= datesInMonth; j++) {
           let fullDate = new Date(year, i, j);
           let startDate = this.startDate || new Date(0, 0, 0);
-          let endDate = this.endDate || new Date(9999, 12, 31);
+          let endDate = this.endDate || new Date(9999, 0, 0);
           let obj = {};
           obj.date = j;
 

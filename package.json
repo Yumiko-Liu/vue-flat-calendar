@@ -1,7 +1,7 @@
 {
   "name": "flat-calendar",
   "description": "📅一个基于 Vue.js 2.x 的日历组件",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Yumiko <yumiko.liu@yahoo.com>",
   "license": "MIT",
   "private": false,
